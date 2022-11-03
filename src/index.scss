@@ -1,0 +1,46 @@
+@import "~@semi-bot/semi-theme-doucreator/semi.min.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  button,
+  [type="button"],
+  [type="reset"],
+  [type="submit"] {
+    background-color: var(--semi-color-primary);
+  }
+
+  /* stylelint-disable-next-line selector-class-pattern */
+  .w-heart--wrapper {
+    @apply max-w-heart mx-auto;
+  }
+}
+
+.semi-button-tertiary {
+  color: #fff;
+  background-color: var(--semi-color-tertiary);
+}
+
+.semi-button:focus {
+  outline: none;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  color: var(--semi-color-text-0);
+  background-color: var(--semi-color-bg-0);
+
+  --semi-shadow-elevated: 0 0 1px rgb(0 0 0 / 30%), 0 4px 14px rgb(0 0 0 / 10%);
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}

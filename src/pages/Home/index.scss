@@ -1,0 +1,21 @@
+.home--wrapper {
+  h2.semi-typography {
+    margin: 20px 0 5px;
+  }
+
+  .semi-carousel {
+    .semi-carousel-content-slide .semi-carousel-content-item-slide-in {
+      display: flex;
+    }
+  }
+
+  .tag-item.active {
+    color: var(--semi-color-primary);
+  }
+
+  .top-detail--item {
+    .semi-typography {
+      color: var(--semi-color-white);
+    }
+  }
+}
