@@ -5,8 +5,8 @@ import { Button, Empty, Skeleton, Table, Tag, Typography } from "@douyinfe/semi-
 import { IconHeartStroked, IconPlayCircle, IconShareStroked } from "@douyinfe/semi-icons";
 import { ColumnProps } from "@douyinfe/semi-ui/lib/es/table";
 import { getPlaylistTrackList, getSongListDetail } from "@/http/api";
-import type { IllustrationNoResult, IllustrationNoResultDark } from "@douyinfe/semi-illustrations";
-import type { Song } from "@/types/home";
+import { IllustrationNoResult, IllustrationNoResultDark } from "@douyinfe/semi-illustrations";
+import { Song } from "@/types/home";
 import { formatPlayTime } from "@/utils";
 import "./index.scss";
 
