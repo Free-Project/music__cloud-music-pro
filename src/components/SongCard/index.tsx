@@ -17,7 +17,7 @@ function SongCard(props: ISongCardProps) {
   return (
     <div className={classNames("song-card", className)} onClick={onClick}>
       <Card
-        className={classNames("w-52 dark:bg-zinc-800")}
+        className={classNames("w-56 dark:bg-zinc-800")}
         shadows="always"
         bordered={false}
         cover={<CoverImage src={`${coverImgUrl}?param=224y224`} />}
