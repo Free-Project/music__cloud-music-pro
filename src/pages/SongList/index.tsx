@@ -1,13 +1,13 @@
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import { Button, Empty, Skeleton, Table, Tag, Typography } from "@douyinfe/semi-ui";
 import { IconHeartStroked, IconPlayCircle, IconShareStroked } from "@douyinfe/semi-icons";
 import { ColumnProps } from "@douyinfe/semi-ui/lib/es/table";
-import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
 import { getPlaylistTrackList, getSongListDetail } from "@/http/api";
-import { IllustrationNoResult, IllustrationNoResultDark } from "@douyinfe/semi-illustrations";
-import { Song } from "@/types/home";
+import type { IllustrationNoResult, IllustrationNoResultDark } from "@douyinfe/semi-illustrations";
+import type { Song } from "@/types/home";
 import { formatPlayTime } from "@/utils";
-import { useState } from "react";
 import "./index.scss";
 
 const { Title, Paragraph } = Typography;
@@ -22,8 +22,10 @@ function SongList() {
     isLoading,
     isError
   } = useQuery(["songDetail", id], () => getSongListDetail({ id }), {
-    select(data) {
-      if (data.code === 200) return data.playlist || {};
+    select: (data) => {
+      if (data.code === 200) {
+        return data.playlist || {};
+      }
     }
   });
 
@@ -33,8 +35,11 @@ function SongList() {
     ["songList", id],
     () => getPlaylistTrackList({ id: parseInt(id!) }),
     {
-      select(data) {
-        if (data.code === 200) return data.songs;
+      select: (data) => {
+        if (data.code === 200) {
+          const { songs = [] } = data;
+          return songs;
+        }
       }
     }
   );
@@ -42,7 +47,7 @@ function SongList() {
   const columns: ColumnProps<Song>[] = [
     {
       title: "序号",
-      dataIndex: "sort",
+      dataIndex: "index",
       width: 80,
       render: (text, record, index) => index + 1
     },
@@ -117,7 +122,7 @@ function SongList() {
             <img src={`${coverImgUrl}?param=224y224`} className="w-full h-full" alt="" />
           </div>
           <div className="flex flex-col">
-            <Title heading={2}>{name}</Title>
+            <Title heading={2}>{name || ""}</Title>
             <Paragraph
               ellipsis={{
                 rows: 4,
@@ -126,10 +131,10 @@ function SongList() {
               }}
               className="mt-4"
             >
-              {description}
+              {description || ""}
             </Paragraph>
             <div className="mt-4 mb-4">
-              {tags?.map((item) => (
+              {(tags || []).map((item) => (
                 <Tag size="large" color="red" className="mr-3" key={item}>
                   #{item}
                 </Tag>
@@ -149,13 +154,12 @@ function SongList() {
           </div>
         </div>
       </Skeleton>
-
       <Title heading={3}>全部歌曲</Title>
       <Table
         loading={listLoading}
         columns={columns}
         dataSource={listData || []}
-        pagination={false}
+        // pagination={false}
         className="mt-5"
         onRow={(record) => {
           return {

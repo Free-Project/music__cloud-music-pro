@@ -120,4 +120,6 @@ function RequestBuilder(config: RequestConfig) {
   return instance;
 }
 
-export const http = RequestBuilder({ baseURL: "/api", withCredentials: true });
+const http = RequestBuilder({ baseURL: "/api", withCredentials: true });
+
+export { http };

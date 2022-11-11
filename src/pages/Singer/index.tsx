@@ -1,16 +1,16 @@
-import { getSingerlistByTag } from "@/http/api";
-import { Artist } from "@/types/home";
-import { SearchInfoType } from "@/types/singer";
-import { Skeleton } from "@douyinfe/semi-ui";
-import { useInfiniteQuery } from "@tanstack/react-query";
 import React, { useState, useEffect } from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { Skeleton } from "@douyinfe/semi-ui";
+import { getSingerlistByTag } from "@/http/api";
+import type { Artist } from "@/types/home";
+import type { SearchInfoType } from "@/types/singer";
 import SingerCategory from "./components/SingerCategory";
 import SingerList from "./components/SingerList";
 import "./index.scss";
 
 function Singer() {
   const [searchInfo, setSearchInfo] = useState<SearchInfoType>({
-    initial: undefined,
+    initial: "-1",
     type: "-1",
     area: "-1"
   });

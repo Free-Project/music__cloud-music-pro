@@ -9,7 +9,7 @@ module.exports = (req, res) => {
   // target 替换为你跨域请求的服务器 如： http://baidu.com
   if (req.url.startsWith("/api")) {
     // target = "https://netease-cloud-music-api-mu-self.vercel.app/";
-    target = "http://music-api.nice-boy.com/";
+    target = "https://music-api.nice-boy.com/";
   }
   // 创建代理对象并转发请求
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

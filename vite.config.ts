@@ -18,8 +18,9 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:3000",
+        target: "https://music-api.nice-boy.com/",
         changeOrigin: true,
+        secure: false, // 本地 http://localhost 跨域请求线上url接口时需要此配置
         rewrite: (path) => path.replace(/^\/api/, "")
       }
     }

@@ -9,22 +9,25 @@ interface ISongCardProps {
   songName?: string;
   className?: string;
   artistsName?: string;
+  onClick?: () => void;
 }
 
 function SongCard(props: ISongCardProps) {
-  const { coverImgUrl, songName, className, artistsName } = props;
+  const { coverImgUrl, songName, className, artistsName, onClick } = props;
   return (
-    <Card
-      className={classNames("w-56 dark:bg-zinc-800", className)}
-      shadows="always"
-      bordered={false}
-      cover={<CoverImage src={`${coverImgUrl}?param=224y224`} />}
-    >
-      <Title heading={5} ellipsis={{ showTooltip: true }}>
-        {songName}
-      </Title>
-      {artistsName && <Text>{artistsName}</Text>}
-    </Card>
+    <div className={classNames("song-card", className)} onClick={onClick}>
+      <Card
+        className={classNames("w-52 dark:bg-zinc-800")}
+        shadows="always"
+        bordered={false}
+        cover={<CoverImage src={`${coverImgUrl}?param=224y224`} />}
+      >
+        <Title heading={5} ellipsis={{ showTooltip: true }}>
+          {songName}
+        </Title>
+        {artistsName && <Text>{artistsName}</Text>}
+      </Card>
+    </div>
   );
 }
 

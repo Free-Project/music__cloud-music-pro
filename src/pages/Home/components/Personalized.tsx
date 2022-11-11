@@ -60,7 +60,6 @@ function Personalized() {
           })}
         </div>
       )}
-
       <div key={curTag}>
         <Skeleton
           placeholder={
@@ -79,12 +78,12 @@ function Personalized() {
             <Carousel
               key={curTag}
               className="w-heart--wrapper h-80"
+              theme="dark"
               speed={1000}
               animation="fade"
               showIndicator={false}
               autoPlay={false}
               arrowType="hover"
-              theme="dark"
             >
               {personalizedList.map((item, index) => {
                 return (
@@ -92,14 +91,14 @@ function Personalized() {
                     {item.map((childItem) => {
                       const { id, coverImgUrl, name } = childItem || {};
                       return (
-                        <div
+                        <SongCard
                           key={id}
+                          coverImgUrl={coverImgUrl}
+                          songName={name}
                           onClick={() => {
                             navigate(`/songList/${id}`);
                           }}
-                        >
-                          <SongCard coverImgUrl={coverImgUrl} songName={name} />
-                        </div>
+                        />
                       );
                     })}
                   </div>

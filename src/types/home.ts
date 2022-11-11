@@ -89,6 +89,7 @@ export interface Song {
   fee?: number;
   copyrightId?: number;
   disc?: Disc;
+  dt?: number;
   no?: number;
   artists?: Artist[];
   ar?: Artist[];
