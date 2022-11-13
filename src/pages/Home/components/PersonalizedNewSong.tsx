@@ -50,7 +50,7 @@ function PersonalizedNewSong() {
           >
             {personalizedList.map((item, index) => {
               return (
-                <div key={index} className="px-32 flex items-center justify-between">
+                <div key={index} className="px-28 flex items-center justify-between">
                   {item.map((childItem) => {
                     const {
                       id,

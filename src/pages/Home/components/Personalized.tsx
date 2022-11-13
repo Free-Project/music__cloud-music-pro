@@ -87,7 +87,7 @@ function Personalized() {
             >
               {personalizedList.map((item, index) => {
                 return (
-                  <div key={`${curTag}${index}`} className="px-32 flex items-center justify-between">
+                  <div key={`${curTag}${index}`} className="px-28 flex items-center justify-between">
                     {item.map((childItem) => {
                       const { id, coverImgUrl, name } = childItem || {};
                       return (
